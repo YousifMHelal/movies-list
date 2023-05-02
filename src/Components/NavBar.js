@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 const NavBar = ({ search }) => {
 
@@ -12,9 +13,9 @@ const NavBar = ({ search }) => {
         <Navbar bg="dark" expand="md">
             <Container>
                 <Navbar.Brand href="#">
-                    <a className='logo' href='/'>
-                        <h2 >Movies</h2>
-                    </a>
+                    <Link className='logo' to='movies-list/'>
+                        movie
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" style={{ background: '#fff' }} />
                 <Navbar.Collapse id="navbarScroll">

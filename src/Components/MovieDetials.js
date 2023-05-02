@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
-import axios from 'axios'
+import axios from 'axios';
 
 
 const MovieDetials = () => {
 
     const param = useParams();
-
-    console.log(param.id)
 
     const [id, setId] = useState([])
     const movieId = async (page) => {

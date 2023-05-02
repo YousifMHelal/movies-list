@@ -3,7 +3,7 @@ import CardList from "./Components/CardList";
 import MovieDetials from "./Components/MovieDetials";
 import axios from 'axios'
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
 
@@ -48,16 +48,14 @@ function App() {
   return (
     <div>
       <NavBar search={getSearchedMovies} />
-      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<CardList
+          <Route path="movies-list/" element={<CardList
             movie={movie}
             select={getSelectedMovies}
             pages={pages} />
           } />
           <Route path="/movie/:id" element = {<MovieDetials />}/>
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }
