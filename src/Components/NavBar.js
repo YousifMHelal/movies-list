@@ -2,17 +2,27 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { getAllMovies, getSearchedMovies } from '../Redux/Action';
+import { useDispatch } from 'react-redux';
 
-const NavBar = ({ search }) => {
+const NavBar = () => {
 
     const onSearch = (word) => {
         search(word)
+    }
+    const dispatch = useDispatch();
+    const search = async (word) => {
+        if (word === "") {
+            dispatch(getAllMovies())
+        } else {
+            dispatch(getSearchedMovies(word))
+        }
     }
 
     return (
         <Navbar bg="dark" expand="md">
             <Container>
-                <Navbar.Brand href="#">
+                <Navbar.Brand>
                     <Link className='logo' to='movies-list/'>
                         movie
                     </Link>

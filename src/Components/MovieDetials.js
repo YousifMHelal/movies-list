@@ -27,7 +27,7 @@ const MovieDetials = () => {
                         <Row>
                             <Col lg="3" md='4' sm='6' className='mt-3'>
                                 <div className='card'>
-                                    <img src={`https://image.tmdb.org/t/p/w500` + id.poster_path} alt="poster"></img>
+                                    <img src={`https://image.tmdb.org/t/p/w500//` + id.poster_path} alt="poster"></img>
                                 </div>
                             </Col>
                             <Col sm="9">
@@ -66,12 +66,12 @@ const MovieDetials = () => {
                 </Row>
                 <Row className='justify-content-center'>
                     <Col className='mt-3 d-flex justify-content-between' sm="12" md="10" lg="6">
-                        <Link to="/">
+                        <Link to="/movies-list/">
                             <button className='bttn'>Back</button>
                         </Link>
-                        <a href={id.homepage} target='_blank' rel="noreferrer">
+                        <Link  to={id.homepage} target='_blank' rel="noreferrer">
                             <button className='bttn'>Home page</button>
-                        </a>
+                        </Link>
                     </Col>
 
                 </Row>

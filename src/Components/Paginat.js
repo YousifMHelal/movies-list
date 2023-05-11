@@ -1,19 +1,35 @@
-import React from 'react'
-import ReactPaginate from 'react-paginate'
+import React, { useState, useEffect } from 'react'
+import ReactPaginate from 'react-paginate';
+import { useSelector, useDispatch } from 'react-redux'
+import { getPages } from '../Redux/Action';
+const Paginat = () => {
 
-const paginat = ({select, pages}) => {
+
+    const [pageCount, setpageCount] = useState(0)
+    const dispatch = useDispatch();
+    const pages = useSelector((state) => state.pageCount);
+
+    useEffect(() => {
+        setpageCount(pages)
+    }, [pages])
+
+
     const handlePageClick = (data) => {
-        select(data.selected + 1) 
+        dispatch(getPages(data.selected + 1))
     }
+
+    if (pageCount > 500) {
+        setpageCount(500)
+    }
+
     return (
-        <div>
             <ReactPaginate
                 breakLabel="..."
                 nextLabel=">>"
                 onPageChange={handlePageClick}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={2}
-                pageCount={pages}
+                pageCount={pageCount}
                 previousLabel="<<"
                 containerClassName='pagination d-flex justify-content-center p-3'
                 pageClassName='page-item'
@@ -29,9 +45,8 @@ const paginat = ({select, pages}) => {
                 breakLinkClassName='page-link'
                 activeLinkClassName='page-link active'
                 disabledLinkClassName='page-link'
-                />
-        </div>
+            />
     )
 }
 
-export default paginat
+export default Paginat
